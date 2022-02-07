@@ -1,15 +1,22 @@
 server:
   port: 7777
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/accounts?serverTimezone=Europe/Warsaw&allowPublicKeyRetrieval=true&useSSL=False
-    username: kodilla_user
-    password: kodilla_password
-  jpa:
-    database: mysql
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
+accounts:
+  spring:
+    datasource:
+      url: jdbc:mysql://localhost:3306/accounts?serverTimezone=Europe/Warsaw&allowPublicKeyRetrieval=true&useSSL=False
+      username: kodilla_user
+      password: kodilla_password
+    jpa:
+      database: mysql
+      show-sql: true
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+  allow-get-accounts: true
